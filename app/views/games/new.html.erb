@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="text-center m-3 d-flex justify-content-center">
+    <% @letters.each do |letter| %>
+      <p class="bg-primary text-white text-uppercase font-weight-bold d-flex align-items-center justify-content-center m-3 letter-square border shadow"><%= letter %></p>
+    <% end %>
+  </div>
+
+  <form action="/score" method="post" data-turbo="false">
+    <div class="input-group mb-3">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :grid, @letters.join %>
+      <input name="word" type="text" class="form-control" placeholder="Tap your word..." aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit" id="button-addon2">Play</button>
+      </div>
+    </div>
+  </form>
+
+</div>
